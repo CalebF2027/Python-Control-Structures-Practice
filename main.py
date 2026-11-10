@@ -46,7 +46,9 @@ def grade_letter(score):
 # list has no items and False otherwise.
 # Rule: do NOT use == with an empty list. Use truthiness with "not".
 def is_empty(items):
-    pass
+    return not items
+
+
 
 
 # Exercise 1.4
@@ -56,7 +58,12 @@ def is_empty(items):
 #   "negative"  otherwise
 # Use if, elif, and else.
 def describe_number(n):
-    pass
+    if n == 0:
+        return("zero")
+    elif n > 0:
+        return("positive")
+    else:
+        return("negative")
 
 
 # =====================================================================
@@ -81,14 +88,21 @@ def countdown(n):
 # Return the total. Do not include the negative number.
 # Example: [4, 5, -1, 10] should return 9.
 def total_until_negative(nums):
-    pass
+    total = 0
+    i = 0
+    while i < len(nums):
+        if nums[i] < 0:
+            return total
+        total += nums[i]
+        i += 1
+    return total
 
 
 # Exercise 2.3
 # Conceptual question: The loop in countdown would run forever if you forgot
 # to update the counter. What is the name for the variable that controls
 # when a while loop stops? Write your answer below.
-# Your answer:
+# Your answer: Loop control variable
 
 
 # =====================================================================
@@ -100,14 +114,21 @@ def total_until_negative(nums):
 # list of the even numbers from 0 up to n (inclusive if n is even).
 # Use range() with a step. Example: even_numbers(6) returns [0, 2, 4, 6].
 def even_numbers(n):
-    pass
+    numbers = []
+    for num in range(0, n + 1, 2):
+        numbers.append(num)
+    return numbers
+
 
 
 # Exercise 3.2
 # Write a function called print_multiples_of_three that prints every multiple
 # of 3 from 3 through 30, one per line. Use range(start, stop, step).
 def print_multiples_of_three():
-    pass
+    for num in range(3, 30, 3):
+        print(num)
+
+    
 
 
 # Exercise 3.3
@@ -119,7 +140,11 @@ def print_multiples_of_three():
 # Use enumerate(). Remember that enumerate() starts counting at 0,
 # so you will need to add 1 to the index.
 def print_numbered_list(items):
-    pass
+    fruits = ["apple", "pear"]
+
+    for index, fruit in enumerate(fruits):
+        print(index, fruit)
+    
 
 
 # Exercise 3.4
@@ -129,7 +154,9 @@ def print_numbered_list(items):
 # Example: {"Ana": 95, "Ben": 82} prints both lines and returns "Ana".
 # Use .items() to get both the key and the value.
 def highest_scorer(scores):
-    pass
+    for name, score in scores.items():
+        print(name, score)
+        
 
 
 # Exercise 3.5
@@ -137,7 +164,7 @@ def highest_scorer(scores):
 #     d = {"red": 1, "blue": 2}
 #     for k in d:
 #         print(k)
-# Your answer:
+# Your answer: It will print red and blue, as it is printing the keys in the dictionary, not the values.
 
 
 # =====================================================================
@@ -149,7 +176,9 @@ def highest_scorer(scores):
 # and returns the index of the first negative number. If there is no negative
 # number, return -1. Use return inside the loop.
 def index_of_first_negative(nums):
-    pass
+    for i, num in enumerate(num):
+        if num < 0:
+            return i
 
 
 # Exercise 4.2
@@ -222,15 +251,15 @@ def fizzbuzz(n):
 
 if __name__ == "__main__":
     print(grade_letter(85))            # Expected: B
-    # print(is_empty([]))                # Expected: True
-    # print(describe_number(-4))         # Expected: negative
+    print(is_empty([]))                # Expected: True
+    print(describe_number(-4))         # Expected: negative
     countdown(3)                       # Expected: 3, 2, 1, Liftoff!
-    # print(total_until_negative([4, 5, -1, 10]))   # Expected: 9
-    # print(even_numbers(6))             # Expected: [0, 2, 4, 6]
-    # print_multiples_of_three()         # Expected: 3, 6, 9, ... 30
-    # print_numbered_list(["apple", "pear"])
-    # print(highest_scorer({"Ana": 95, "Ben": 82}))   # Expected: Ana
-    # print(index_of_first_negative([3, 8, -2, 5]))   # Expected: 2
+    print(total_until_negative([4, 5, -1, 10]))   # Expected: 9
+    print(even_numbers(6))             # Expected: [0, 2, 4, 6]
+    print_multiples_of_three()         # Expected: 3, 6, 9, ... 30
+    print_numbered_list(["apple", "pear"])
+    print(highest_scorer({"Ana": 95, "Ben": 82}))   # Expected: Ana
+    print(index_of_first_negative([3, 8, -2, 5]))   # Expected: 2
     # print_without_vowels("python")
     # print(has_pair_with_sum([2, 7, 11], 9))         # Expected: True
     # bugged_countdown()
