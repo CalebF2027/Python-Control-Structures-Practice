@@ -176,9 +176,10 @@ def highest_scorer(scores):
 # and returns the index of the first negative number. If there is no negative
 # number, return -1. Use return inside the loop.
 def index_of_first_negative(nums):
-    for i, num in enumerate(num):
+    for i, num in enumerate(nums):
         if num < 0:
             return i
+    return -1
 
 
 # Exercise 4.2
@@ -186,7 +187,10 @@ def index_of_first_negative(nums):
 # each character that is NOT a vowel (a, e, i, o, u), one per line.
 # Use continue to skip the vowels.
 def print_without_vowels(word):
-    pass
+    for char in word:
+        if char in "aeiou":
+            continue
+            
 
 
 # Exercise 4.3
@@ -196,14 +200,18 @@ def print_without_vowels(word):
 # Hint: this needs a nested for loop. Use return as soon as you find a pair.
 # Example: has_pair_with_sum([2, 7, 11], 9) returns True (2 + 7 = 9).
 def has_pair_with_sum(nums, target):
-    pass
+    for i in range (len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return True
+            return "False"
 
 
 # Exercise 4.4
 # Conceptual question: In the nested loop from Exercise 4.3, if you used break
 # instead of return when you found a pair, what would happen? Would the
 # function still return the right answer? Write your answer below.
-# Your answer:
+# Your answer: If you use break, it may not have the same answer, as the function will stop and go back to the beginning after finding a pair, instead of moving on.
 
 
 # =====================================================================
@@ -217,14 +225,14 @@ def bugged_countdown():
     n = 5
     while n > 0:
         print(n)
-
+        n -= 1
 
 # Exercise 5.2
 # This code should print each fruit and its price, but it crashes.
 # Fix it so it works.
 def bugged_prices():
     prices = {"apple": 1.20, "pear": 0.80}
-    for fruit, price in prices:
+    for fruit, price in prices.items():
         print(fruit, price)
 
 
@@ -241,7 +249,15 @@ def bugged_prices():
 #   - otherwise prints the number itself
 # Hint: check the FizzBuzz case first. Think about why the order matters.
 def fizzbuzz(n):
-    pass
+    for num in range(1, n+1):
+        if num % 3 == 0 and num % 5 == 0:
+            print("FizzBuzz")
+        elif num % 3 == 0:
+            print("Fizz")
+        elif num % 5 == 0:
+            print("Buzz")
+        else:
+            print(num)
 
 
 # =====================================================================
@@ -260,9 +276,9 @@ if __name__ == "__main__":
     print_numbered_list(["apple", "pear"])
     print(highest_scorer({"Ana": 95, "Ben": 82}))   # Expected: Ana
     print(index_of_first_negative([3, 8, -2, 5]))   # Expected: 2
-    # print_without_vowels("python")
-    # print(has_pair_with_sum([2, 7, 11], 9))         # Expected: True
-    # bugged_countdown()
-    # bugged_prices()
-    # fizzbuzz(15)
+    print_without_vowels("python")
+    print(has_pair_with_sum([2, 7, 11], 9))         # Expected: True
+    bugged_countdown()
+    bugged_prices()
+    fizzbuzz(15)
     pass
